@@ -18,14 +18,21 @@ namespace Lab5.Controllers
             _context = context;
         }
 
-        // GET: api/Cars
+        /// <summary>
+        /// Get all cars
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Car>>> GetCarItems()
         {
             return await _context.CarItems.ToListAsync();
         }
 
-        // GET: api/Cars/5
+        /// <summary>
+        /// Get car with specified id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<Car>> GetCar(int id)
         {
@@ -39,8 +46,12 @@ namespace Lab5.Controllers
             return car;
         }
 
-        // PUT: api/Cars/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Update car in db
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="car"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCar(int id, Car car)
         {
@@ -69,9 +80,11 @@ namespace Lab5.Controllers
 
             return NoContent();
         }
-
-        // POST: api/Cars
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Adds new car to DB
+        /// </summary>
+        /// <param name="car"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<Car>> PostCar(Car car)
         {
@@ -81,7 +94,11 @@ namespace Lab5.Controllers
             return CreatedAtAction("GetCar", new { id = car.Id }, car);
         }
 
-        // DELETE: api/Cars/5
+        /// <summary>
+        /// Delete car from db with concrete id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCar(int id)
         {
